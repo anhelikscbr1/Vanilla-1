@@ -10,41 +10,41 @@
         <link rel="stylesheet" href="./css/index.css">
          <title>Carrito de Compras!</title>
     </head>
-  <body>
+<body>
     <div class="container">
-            <div class="contenido">
-                <div class="compras">
-                    <h2 id="nombre">Anhelik Escobar</h1>
-                    <h4 id="nua">NUA 146981</h2>
-                    <h5 id="materia">Aplicaciones de internet</h5>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Item</th>
-                                <th scope="col">Cantidad</th>
-                                <th scope="col">Acciones</th>
-                                <th scope="col">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody id="items"></tbody>
-                        <tfoot>
-                            <tr id="footer">
-                                <!--tr un solo renglon y colspan agrupa las columnas-->
-                                <th scope="row" colspan="5">
-                                    Carrito Vacio- Compra YA!
-                                </th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-                <div class="productos">
-                    <h4 class="text-center">Productos</h4>
-                    <div class="row" id="cards"></div>
-                </div>
-                
+        <div class="contenido">
+            <div class="compras">
+                <h2>Anhelik Escobar</h1>
+                <h4>NUA 146981</h2>
+                <h5>Aplicaciones</h5>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Item</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Acciones</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="items"></tbody>
+                    <tfoot>
+                        <tr id="footer">
+                            <!--colspan agrupa las columnas-->
+                            <th scope="row" colspan="5">
+                                Carrito Vacio- Compra YA!
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
             </div>
+            <div class="productos">
+                <h4 class="text-center">Productos</h4>
+                <div class="row" id="cards"></div>
+            </div>
+        </div>
     </div>
+
     <template id="template-footer">
         <th scope="row" colspan="2">
             Total de Productos
@@ -59,7 +59,6 @@
             $ <span>5000</span>
         </td>
     </template>
-
     <template id="template-carrito">
         <tr>
             <th scope="row">id</th>
@@ -75,7 +74,6 @@
             </td>
         </tr>
     </template>
-
     <template id="template-card">
         <div class="col-12 col-md-6 mb-2">
         <div class="card">
@@ -91,8 +89,6 @@
         </div>
     </template>
 
-    <!--archivo de java-->
     <script src="./js/app.js"></script>
 </body>
 </html>
-

@@ -21,11 +21,30 @@ cards.addEventListener('click', e => {
     addCarrito(e)
  })
 
- const addCarrito = e => {
-    if(e.target.classList.contains('btn-dark')){
-        setCarrito(e.target.parentElement)
-        localStorage.setItem('carrito', JSON.stringify(carrito))
+ items.addEventListener('click', e => {
+    btnAcciones(e)
+})
+
+const btnAcciones = e => {
+    if(e.target.classList.contains('btn-success')) {
+        let producto = carrito[e.target.dataset.id]
+        producto.cantidad++
+        carrito[e.target.dataset.id] = { ...producto }
+        pintarCarrito()
     }
+
+    if(e.target.classList.contains('btn-danger')) {
+        let producto = carrito[e.target.dataset.id]
+        producto.cantidad--
+        if (producto.cantidad === 0){
+            delete carrito [e.target.dataset.id]
+        }else{
+            carrito[e.target.dataset.id] = { ...producto }
+        }
+        pintarCarrito()
+    }
+    
+    localStorage.setItem('carrito', JSON.stringify(carrito))
     e.stopPropagation()
 }
 
@@ -61,7 +80,7 @@ const pintarCarrito = () => {
         templateCarrito.querySelectorAll('td')[0].textContent = producto.title
         templateCarrito.querySelectorAll('td')[1].textContent = producto.cantidad
         templateCarrito.querySelector('span').textContent = producto.cantidad * producto.precio
-
+        //Id a los botones
         templateCarrito.querySelector('.btn-success').dataset.id = producto.id
         templateCarrito.querySelector('.btn-danger').dataset.id = producto.id
         const clone = templateCarrito.cloneNode(true)
@@ -69,6 +88,38 @@ const pintarCarrito = () => {
     })
     items.appendChild(fragment)
     pintarFooter()
+}
+
+const pintarFooter = () => {
+    footer.innerHTML = ''
+    if (Object.keys(carrito).length === 0) {
+        footer.innerHTML = 
+        `
+        <th scope="row" colspan="5">
+            Carrito Vacio- Compra YA!
+        </th>
+        `
+        return
+    }
+
+    const nCantidad = Object.values(carrito).reduce((acc, {cantidad}) => 
+        acc + cantidad
+    , 0)
+
+    const nPrecio = Object.values(carrito).reduce((acc, {cantidad, precio}) => 
+        acc + (cantidad * precio)
+    , 0)
+    templateFooter.querySelectorAll('td')[0].textContent = nCantidad
+    templateFooter.querySelector('span').textContent = nPrecio
+    const clone = templateFooter.cloneNode(true)
+    fragment.appendChild(clone)
+    footer.appendChild(fragment)
+    const boton = document.querySelector('#vaciar-carrito')
+    boton.addEventListener('click', () => {
+        carrito = {}
+        localStorage.setItem('carrito', JSON.stringify(carrito))
+        pintarCarrito()
+    })
 }
 
 const cargaDatosBD = async () => {
