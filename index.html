@@ -1,46 +1,98 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <title>Carrito de Compras!</title>
-  </head>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/index.css">
+         <title>Carrito de Compras!</title>
+    </head>
   <body>
     <div class="container">
-        <h4 class="text-center">Carrito</h4>
-        <div class="contenido">
-            <div class="compras">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Item</th>
-                            <th scope="col">Cantidad</th>
-                            <th scope="col">Acciones</th>
-                            <th scope="col">Total</th>
-                        </tr>
-                    </thead>
-                    <tbody id="items">
-
-                    </tbody>
-                    <tfoot>
-                        <tr id="footer">
-                            <th scope="row" colspan="5">Carrito Vacio - Compra Ya!!</th>
-                        </tr>
-                    </tfoot>
-                </table>
+            <div class="contenido">
+                <div class="compras">
+                    <h2 id="nombre">Anhelik Escobar</h1>
+                    <h4 id="nua">NUA 146981</h2>
+                    <h5 id="materia">Aplicaciones de internet</h5>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Item</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Acciones</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="items"></tbody>
+                        <tfoot>
+                            <tr id="footer">
+                                <!--tr un solo renglon y colspan agrupa las columnas-->
+                                <th scope="row" colspan="5">
+                                    Carrito Vacio- Compra YA!
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="productos">
+                    <h4 class="text-center">Productos</h4>
+                    <div class="row" id="cards"></div>
+                </div>
+                
             </div>
-            <div class="productos">
-                <h4 class="text-center">Productos</h4>
-                <div class="row" id="cards"></div>
+    </div>
+    <template id="template-footer">
+        <th scope="row" colspan="2">
+            Total de Productos
+        </th>
+        <td>10</td>
+        <td>
+            <button class="btn btn-danger btn-sm " id="vaciar-carrito">
+                Vaciar carrito
+            </button>
+        </td>
+        <td class="font-weight-bold">
+            $ <span>5000</span>
+        </td>
+    </template>
+
+    <template id="template-carrito">
+        <tr>
+            <th scope="row">id</th>
+            <td>Café</td>
+            <td>1</td>
+            <td>
+                <button class="btn btn-success btn-sm">+</button>
+                |
+                <button class="btn btn-danger btn-sm">-</button>
+            </td>
+            <td>
+                $ <span>500</span>
+            </td>
+        </tr>
+    </template>
+
+    <template id="template-card">
+        <div class="col-12 col-md-6 mb-2">
+        <div class="card">
+            <img src="" alt="" srcset="" class="card-img-top">
+            <div class="card-body">
+                <h5>Titulos</h5>
+                <p>Precio</p>
+                <button class="btn btn-dark">
+                    comprar
+                </button>
             </div>
         </div>
-    </div>
+        </div>
+    </template>
+
+    <!--archivo de java-->
     <script src="./js/app.js"></script>
-  </body>
+</body>
 </html>
+
